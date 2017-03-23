@@ -131,8 +131,8 @@ Contributors:
         },
 
         _processTask: function(e) {
-          if (this.validate()) {
-            this.action = e.target.dataset.args;
+          this.action = e.target.dataset.args;
+          if (this.action === 'cancel' || this.validate()) {
             this.taskData = {
               'entity-type': 'task',
               id: this.$.layout.element.task.id,
