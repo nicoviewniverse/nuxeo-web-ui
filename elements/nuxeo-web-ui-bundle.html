@@ -278,12 +278,13 @@
 
 <nuxeo-slot-content name="documentViewPage" slot="DOCUMENT_VIEWS_PAGES" order="10">
   <template>
-    <nuxeo-filter document="[[document]]" expression="document.facets.indexOf('Folderish') === -1">
+    <nuxeo-filter document="[[document]]" expression="document.facets.indexOf('Folderish') === -1
+                                                   && document.facets.indexOf('Collection') === -1">
       <template>
         <nuxeo-document-page name="view" document="[[document]]"></nuxeo-document-page>
       </template>
     </nuxeo-filter>
-    <nuxeo-filter document="[[document]]" facet="Folderish">
+    <nuxeo-filter document="[[document]]" facet="Folderish,Collection">
       <template>
         <nuxeo-collapsible-document-page name="view" document="[[document]]"></nuxeo-collapsible-document-page>
       </template>
@@ -490,5 +491,44 @@
 <nuxeo-slot-content name="themesUserMenuItem" slot="USER_MENU" order="20">
   <template>
     <nuxeo-menu-item name="themes" label="app.user.themes" route="page:themes"></nuxeo-menu-item>
+  </template>
+</nuxeo-slot-content>
+
+
+
+
+
+<link rel="import" href="nuxeo-picture-document-page.html">
+
+<nuxeo-slot-content name="damSearchMenuButtons" slot="DRAWER_ITEMS" order="45">
+  <template>
+    <nuxeo-menu-icon id="assetsSearchButton" name="assetsSearch" icon="icons:perm-media" label="dam.assets.heading">
+    </nuxeo-menu-icon>
+  </template>
+</nuxeo-slot-content>
+
+<nuxeo-slot-content name="damSearchMenuButtons" slot="DRAWER_PAGES">
+  <template>
+    <nuxeo-search-form name="assetsSearch" search-name="assets" auto display-auto-control
+                       provider="assets_search"
+                       schemas="dublincore,common,uid,thumbnail"></nuxeo-search-form>
+  </template>
+</nuxeo-slot-content>
+
+<nuxeo-slot-content name="pictureDocumentViewPage" slot="DOCUMENT_VIEWS_PAGES" order="5">
+  <template>
+    <nuxeo-filter document="[[document]]" type="Picture">
+      <template>
+        <nuxeo-picture-document-page name="view" document="[[document]]"></nuxeo-picture-document-page>
+      </template>
+    </nuxeo-filter>
+  </template>
+</nuxeo-slot-content>
+
+
+
+<nuxeo-slot-content name="shareDocumentAction" slot="DOCUMENT_ACTIONS" order="40">
+  <template>
+    <nuxeo-easyshare-share-link document="[[document]]"></nuxeo-easyshare-share-link>
   </template>
 </nuxeo-slot-content>
