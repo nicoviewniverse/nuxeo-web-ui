@@ -420,7 +420,7 @@ limitations under the License.
         actionContext: {
           type: Object,
           computed: '_actionContext(currentDocument, currentUser, tasks, currentTask, taskCount,' +
-          ' clipboard, clipboardDocCount, userWorkspace)'
+          ' clipboard, clipboardDocCount, userWorkspace, entity)'
         },
 
         clipboard: {
@@ -627,7 +627,8 @@ limitations under the License.
           clipboardDocCount: this.clipboardDocCount,
           clipboard: this.clipboard,
           actionContext: this.actionContext,
-          userWorkspace: this.userWorkspace
+          userWorkspace: this.userWorkspace,
+          entity: this.entity
         };
       },
 
